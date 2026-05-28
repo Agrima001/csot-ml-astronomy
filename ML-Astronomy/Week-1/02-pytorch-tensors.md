@@ -195,7 +195,7 @@ A common mistake is forgetting `.cpu()` when your tensor is on GPU — you'll ge
 A single galaxy image from the dataset is a tensor of shape `(3, 64, 64)`:
 
 - `3` — RGB channels
-- `64, 64` — height × width in pixels (after our resize transform in Week 2)
+- `64, 64` — height × width in pixels (after our resize transform in Week 1, Part 2)
 
 A **batch** of 32 such images is `(32, 3, 64, 64)`. Every layer of every model we build will be expressed as tensor operations on shapes like these. The "training" of the network is, at its core, a sequence of matrix multiplications and element-wise operations on these tensors — efficient because they all run on the GPU.
 

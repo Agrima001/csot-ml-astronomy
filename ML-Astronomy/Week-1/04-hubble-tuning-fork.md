@@ -84,7 +84,7 @@ A subtle point: this is a *projected* shape. An E0 might be a sphere, *or* a foo
 
 ### Lenticulars: S0
 
-The hinge of the fork. **Lenticulars** have a disk (like a spiral) but no spiral arms (like an elliptical). We'll return to them in Week 6 because they're the most common source of confusion for classifiers — they sit in the visual no-man's-land between the two main families.
+The hinge of the fork. **Lenticulars** have a disk (like a spiral) but no spiral arms (like an elliptical). We'll return to them in Week 3 because they're the most common source of confusion for classifiers — they sit in the visual no-man's-land between the two main families.
 
 ### Spirals: Sa, Sb, Sc
 

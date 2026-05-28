@@ -12,7 +12,7 @@ A **smooth, featureless ball or oval of light**, brightest in the centre and fad
 
 **Visual signatures**
 - No spiral arms, no disk, no dust lanes.
-- Light profile is smooth — if you sketch contours of constant brightness (*isophotes*, which we'll formalise in Week 3), they're nested ellipses.
+- Light profile is smooth — if you sketch contours of constant brightness (*isophotes*, which we'll formalise in Week 2), they're nested ellipses.
 - Colour is typically **yellow-to-red** in true-colour imagery.
 
 **Physical story**
@@ -40,7 +40,7 @@ A **flat rotating disk** with arms wound around a central **bulge**. If a straig
 
 **Physical story**
 - *Rotation-supported* — stars and gas orbit coherently in a thin disk.
-- The arms are **density waves**, not rigid structures (more on this in Week 5).
+- The arms are **density waves**, not rigid structures (more on this in Week 3).
 - Lots of cold gas and dust → ongoing star formation → blue, hot, short-lived stars trace the arms.
 - The bulge is older and redder; the disk is younger and bluer.
 - **Bars** are common (~⅔ of nearby disk galaxies, including ours) and act as engines that funnel gas inward.
@@ -73,7 +73,7 @@ Lenticulars are the **identity crisis of the Hubble sequence**. They have:
   - **Mergers** that disrupted the disk.
 - Common in galaxy groups and the outskirts of clusters.
 
-> **Why this matters for our project:** S0s sit *exactly* on the visual decision boundary between ellipticals and spirals. They are notoriously hard to classify — even for humans — and will likely be the dominant source of confusion in our CNN's confusion matrix in Week 6.
+> **Why this matters for our project:** S0s sit *exactly* on the visual decision boundary between ellipticals and spirals. They are notoriously hard to classify — even for humans — and will likely be the dominant source of confusion in our CNN's confusion matrix in Week 3.
 
 **Where to look**
 - **NGC 5866** (sometimes called the Spindle Galaxy) — striking edge-on S0 with a dust lane. [Hubble image](https://esahubble.org/images/heic0604a/).
@@ -127,7 +127,7 @@ Morphology is therefore the **2D projection of a 3D system shaped by these physi
 - **Image artefacts** (cosmic ray hits, satellite trails, diffraction spikes) can mimic real morphological features.
 - **Distance / resolution.** A galaxy too far away may look like a featureless blob even if it's a beautiful spiral up close.
 
-A robust ML pipeline has to deal with all of these. We'll see how transforms (Week 2) and validation (Week 6) help.
+A robust ML pipeline has to deal with all of these. We'll see how transforms (Week 1, Part 2) and validation (Week 3) help.
 
 ---
 
@@ -167,4 +167,4 @@ Open each link and decide for yourself: **E, S, SB, S0, or Irr?** Answers are hi
 
 ---
 
-⬅️ Previous: [`04-hubble-tuning-fork.md`](04-hubble-tuning-fork.md) | ➡️ Next: [`06-project-task.md`](06-project-task.md)
+⬅️ Previous: [`04-hubble-tuning-fork.md`](04-hubble-tuning-fork.md) | ➡️ Next: [`06-how-telescopes-see.md`](06-how-telescopes-see.md)

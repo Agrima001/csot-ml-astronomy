@@ -26,16 +26,15 @@ Inspired by DevClub's Summer of Code, CSoT is the launchpad for freshers (and an
 
 ---
 
-## ML in Astronomy — 6-Week Roadmap
+## ML in Astronomy — 5-Week Roadmap
 
 | Week | Theme | Status |
 |------|----------------------------------------------|---------------|
-| 1    | [Environment Setup & PyTorch Tensors](ML-Astronomy/Week-1/) | Available |
-| 2    | PyTorch Data Pipelines (Datasets & DataLoaders) | Coming soon |
-| 3    | Baseline with Scikit-Learn                   | Coming soon |
-| 4    | Fully Connected Networks (`nn.Module`)       | Coming soon |
-| 5    | The Training Loop & CNNs                     | Coming soon |
-| 6    | Validation & Interpretation                  | Coming soon |
+| 1    | [Foundations: Tensors, GPUs & the Galaxy Data Pipeline](ML-Astronomy/Week-1/) | Available |
+| 2    | [Baselines & Fully-Connected Networks](ML-Astronomy/Week-2/) | Coming soon |
+| 3    | [CNNs, the Training Loop & Evaluation](ML-Astronomy/Week-3/) | Coming soon |
+| 4    | [To be announced](ML-Astronomy/Week-4/)      | Coming soon |
+| 5    | [To be announced](ML-Astronomy/Week-5/)      | Coming soon |
 
 Read the [track-level overview](ML-Astronomy/README.md) for the project abstract, dataset details, and the full learning arc.
 

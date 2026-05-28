@@ -102,7 +102,7 @@ You will not need to install anything locally — Colab ships every dependency a
 | GPU memory | ~15 GB (T4) | Comfortable for batch sizes 32–128 at 64×64 resolution. |
 | Disk | ~5–10 GB | The full Galaxy Zoo 2 image set unpacked; we may downsample. |
 | Time per training run | 5–30 minutes | A small CNN for 5–10 epochs over a curated subset. |
-| Total project time | ~25–40 hours over 6 weeks | Concept reading + notebook work + experimentation. |
+| Total project time | ~25–40 hours over 5 weeks | Concept reading + notebook work + experimentation. |
 
 ---
 
@@ -127,11 +127,11 @@ We use the **Galaxy Zoo 2** image set, curated by the Galaxy Zoo citizen-science
 
 A single galaxy image from the Kaggle mirror is a **colour JPG**, typically 424×424 pixels, composed from SDSS images in the `g`, `r`, and `i` photometric bands (these are filters in the visible-to-near-infrared range). For training we will downsample to 64×64 to keep things fast on Colab.
 
-The "true colour" you see in the JPG is therefore a *false-colour composite*: each pixel's RGB triple is a stretched mapping of three monochrome filter measurements. Detailed in **Week 2**.
+The "true colour" you see in the JPG is therefore a *false-colour composite*: each pixel's RGB triple is a stretched mapping of three monochrome filter measurements. Detailed in **Week 1, Part 2**.
 
 ### How we'll use it
 
-Detailed download and pipeline instructions show up in **Week 2**, when we wire up `Dataset`s and `DataLoader`s. Briefly, the flow will be:
+Detailed download and pipeline instructions show up in **Week 1, Part 2**, when we wire up `Dataset`s and `DataLoader`s. Briefly, the flow will be:
 
 1. Download the Kaggle dataset to Colab (or your Drive) via the Kaggle API or a one-shot `wget`.
 2. Inspect the on-disk folder structure (`train/elliptical/`, `train/spiral/`, …).
@@ -143,7 +143,7 @@ Detailed download and pipeline instructions show up in **Week 2**, when we wire 
 
 ## The Classification Problem We Will Solve
 
-To keep the problem tractable and the deliverable interpretable, we collapse the very detailed Galaxy Zoo 2 vote tree into a **small set of high-level morphological classes**. The exact label set will be confirmed in Week 2 once we inspect the dataset, but the working plan is:
+To keep the problem tractable and the deliverable interpretable, we collapse the very detailed Galaxy Zoo 2 vote tree into a **small set of high-level morphological classes**. The exact label set will be confirmed in Week 1, Part 2 once we inspect the dataset, but the working plan is:
 
 | Label | Hubble correspondence | Visual hallmark |
 |-------|-----------------------|-----------------|
@@ -153,7 +153,7 @@ To keep the problem tractable and the deliverable interpretable, we collapse the
 | `lenticular` (`S0`)  | S0            | Disk + bulge but **no arms**. (Optional — sometimes merged into ellipticals.) |
 | `irregular_or_merger`| Irr           | Chaotic / disturbed / tidally interacting. |
 
-We may merge `spiral_barred` and `spiral_unbarred` into a single `spiral` class for the first end-to-end run, then split them again in Week 6 to see if the CNN can recover the bar feature on its own. That experiment will be a useful demonstration of how class granularity changes both difficulty and interpretability.
+We may merge `spiral_barred` and `spiral_unbarred` into a single `spiral` class for the first end-to-end run, then split them again in Week 3 to see if the CNN can recover the bar feature on its own. That experiment will be a useful demonstration of how class granularity changes both difficulty and interpretability.
 
 The classes themselves are explained in detail in [`Week-1/04-hubble-tuning-fork.md`](Week-1/04-hubble-tuning-fork.md) and [`Week-1/05-galaxy-morphologies.md`](Week-1/05-galaxy-morphologies.md).
 
@@ -163,14 +163,13 @@ The classes themselves are explained in detail in [`Week-1/04-hubble-tuning-fork
 
 ```mermaid
 flowchart LR
-    W1["Week 1<br/>Tensors + GPU<br/>(Hubble Sequence)"] --> W2["Week 2<br/>DataLoaders<br/>(CCDs + Filters)"]
-    W2 --> W3["Week 3<br/>Scikit-Learn baseline<br/>(Surface brightness)"]
-    W3 --> W4["Week 4<br/>MLP in nn.Module<br/>(Sersic profile)"]
-    W4 --> W5["Week 5<br/>CNN + Training loop<br/>(Density waves)"]
-    W5 --> W6["Week 6<br/>Validation + Confusion matrix<br/>(Lenticulars, mergers)"]
+    W1["Week 1<br/>Tensors + GPU + DataLoaders<br/>(Hubble Sequence, CCDs, Filters)"] --> W2["Week 2<br/>Baseline + MLP<br/>(Surface brightness, Sersic)"]
+    W2 --> W3["Week 3<br/>CNN + Training + Eval<br/>(Density waves, Lenticulars, Mergers)"]
+    W3 --> W4["Week 4<br/>To be announced"]
+    W4 --> W5["Week 5<br/>To be announced"]
 ```
 
-Each week pairs a **machine-learning skill** with an **astronomy concept** that motivates it. By Week 6 you will have a trained model, a confusion matrix you can interpret astrophysically, and saved weights you can re-load.
+Each week pairs **machine-learning skills** with the **astronomy concepts** that motivate them. By the end of Week 3 you will have a trained CNN, a confusion matrix you can interpret astrophysically, and saved weights you can re-load. Weeks 4 and 5 build further — content to be announced.
 
 A complementary view — **what flows through the pipeline each week**:
 
@@ -194,21 +193,18 @@ By the end you will be able to explain, defend, and reproduce every arrow in tha
 
 | Week | Title | ML Focus | Astronomy Focus | Link |
 |------|-------|----------|-----------------|------|
-| 1 | Environment Setup & PyTorch Tensors | Tensors, GPU, Colab | Hubble Tuning Fork, galaxy morphologies | [Week-1/](Week-1/) |
-| 2 | PyTorch Data Pipelines | `Dataset`, `DataLoader`, `transforms` | CCDs, photometric filters (`ugriz`) | Coming soon |
-| 3 | Baseline with Scikit-Learn | Flattening, KNN / Logistic Regression | Surface brightness, isophotes | Coming soon |
-| 4 | Fully Connected Networks | `nn.Module`, `nn.Linear`, loss + optim | Sérsic profile, stellar demographics | Coming soon |
-| 5 | Training Loop & CNNs | `nn.Conv2d`, `nn.MaxPool2d`, training loop | Spiral density waves, dust lanes, H II regions | Coming soon |
-| 6 | Validation & Interpretation | Eval loop, confusion matrix, checkpointing | Lenticulars (S0), mergers, galaxy evolution | Coming soon |
+| 1 | Foundations: Tensors, GPUs & the Galaxy Data Pipeline | Tensors, GPU, Colab, `transforms`, `ImageFolder`, `DataLoader` | Hubble Tuning Fork, galaxy morphologies, CCDs, photometric filters (`ugriz`) | [Week-1/](Week-1/) |
+| 2 | Baselines & Fully-Connected Networks | Flattening, KNN / Logistic Regression, `nn.Module`, `nn.Linear`, loss + optim | Surface brightness, isophotes, Sérsic profile, stellar demographics | [Week-2/](Week-2/) |
+| 3 | CNNs, the Training Loop & Evaluation | `nn.Conv2d`, `nn.MaxPool2d`, training loop, eval loop, confusion matrix, checkpointing | Spiral density waves, dust lanes, H II regions, lenticulars (S0), mergers | [Week-3/](Week-3/) |
+| 4 | To be announced | TBA | TBA | [Week-4/](Week-4/) |
+| 5 | To be announced | TBA | TBA | [Week-5/](Week-5/) |
 
 ### What each week delivers
 
-- **Week 1 — Foundations.** A working Colab GPU notebook and the language to describe galaxy morphology. *Deliverable:* a notebook that prints `cuda:0` and successfully moves a tensor to the GPU. The smallest possible smoke test.
-- **Week 2 — Data.** Galaxy images flowing through a `DataLoader`, normalised and batched. *Deliverable:* a matplotlib grid of 32 galaxy thumbnails plotted directly from your DataLoader, with class labels overlaid.
-- **Week 3 — Baseline.** A traditional ML classifier trained on flattened pixels. *Deliverable:* a baseline accuracy number, a confusion matrix, and a short writeup of why this approach struggles. This is the bar future weeks must clear.
-- **Week 4 — MLP.** Your first neural network. *Deliverable:* a 2-layer MLP that forward-passes a batch without errors and prints model `summary()`.
-- **Week 5 — CNN + Training Loop.** The headline week. *Deliverable:* a small CNN trained for 5–10 epochs with a clearly-decreasing training loss curve.
-- **Week 6 — Evaluation.** Real numbers, real plots. *Deliverable:* validation/test accuracy beating the Week-3 baseline, train/val loss curves, a confusion matrix you can talk about astrophysically, and `galaxy_model.pth` weights ready to ship.
+- **Week 1 — Foundations.** A working Colab GPU notebook, the language to describe galaxy morphology, and a complete data pipeline. *Deliverables:* a notebook that prints `cuda:0` and moves a tensor to the GPU (Part 1), plus a matplotlib grid of galaxy thumbnails plotted directly from a `DataLoader` with class labels (Part 2).
+- **Week 2 — Baseline & MLP.** A traditional ML classifier trained on flattened pixels, then your first neural network. *Deliverables:* a scikit-learn baseline accuracy (the bar later models must clear) and a 2-layer MLP that forward-passes a batch without errors and prints its architecture.
+- **Week 3 — CNN, Training & Evaluation.** The headline week. *Deliverables:* a small CNN trained for 5–10 epochs with a clearly-decreasing loss curve, validation/test accuracy beating the Week-2 baseline, train/val loss curves, a confusion matrix you can talk about astrophysically, and `galaxy_model.pth` weights ready to ship.
+- **Weeks 4 & 5 — To be announced.** Content is being planned; these build on the trained CNN from Week 3.
 
 ---
 
@@ -264,7 +260,7 @@ Things you do **not** need:
 - Prior deep-learning experience.
 - An astronomy course.
 - A local GPU.
-- A Kaggle account on day one (you'll want one by Week 2).
+- A Kaggle account on day one (you'll want one by Week 1, Part 2).
 
 ---
 
@@ -309,21 +305,21 @@ A quick reference for jargon that recurs across weeks. Each term is explained in
 
 - **Tensor.** A multi-dimensional array of numbers. In PyTorch, the universal data container. (Week 1)
 - **Device.** Where a tensor lives — `cpu` or `cuda:0` for the first GPU. (Week 1)
-- **Dataset.** A PyTorch object that knows how to load *one* sample given an index. (Week 2)
-- **DataLoader.** A PyTorch object that wraps a `Dataset` and yields *batches* of samples, optionally shuffled. (Week 2)
-- **Batch.** A group of samples processed together in one forward pass — typically 32, 64, or 128 for image work. (Week 2)
-- **Transform.** A function applied to each sample as it's loaded — usually resize, crop, normalise, etc. (Week 2)
-- **Baseline.** A simple model used as a yardstick to beat. (Week 3)
-- **Model / Module.** A PyTorch `nn.Module` subclass with learnable parameters. (Week 4)
-- **Forward pass.** Running data through the model to get a prediction. (Week 4)
-- **Loss.** A scalar measuring how wrong the prediction is. (Week 4)
-- **Optimiser.** An algorithm that updates model weights using gradients of the loss. (Week 4)
-- **Backpropagation.** The algorithm that computes gradients of the loss w.r.t. every weight. (Week 5)
-- **Epoch.** One full pass through the training set. (Week 5)
-- **Convolution.** A small filter slid across an image to detect local patterns. The "C" in CNN. (Week 5)
-- **Pooling.** A downsampling operation that summarises a small spatial region. (Week 5)
-- **Overfitting.** When training loss keeps falling but validation loss starts rising. (Week 6)
-- **Confusion matrix.** A grid showing predicted vs. true labels — invaluable for diagnosing class-specific failures. (Week 6)
+- **Dataset.** A PyTorch object that knows how to load *one* sample given an index. (Week 1, Part 2)
+- **DataLoader.** A PyTorch object that wraps a `Dataset` and yields *batches* of samples, optionally shuffled. (Week 1, Part 2)
+- **Batch.** A group of samples processed together in one forward pass — typically 32, 64, or 128 for image work. (Week 1, Part 2)
+- **Transform.** A function applied to each sample as it's loaded — usually resize, crop, normalise, etc. (Week 1, Part 2)
+- **Baseline.** A simple model used as a yardstick to beat. (Week 2)
+- **Model / Module.** A PyTorch `nn.Module` subclass with learnable parameters. (Week 2)
+- **Forward pass.** Running data through the model to get a prediction. (Week 2)
+- **Loss.** A scalar measuring how wrong the prediction is. (Week 2)
+- **Optimiser.** An algorithm that updates model weights using gradients of the loss. (Week 2)
+- **Backpropagation.** The algorithm that computes gradients of the loss w.r.t. every weight. (Week 3)
+- **Epoch.** One full pass through the training set. (Week 3)
+- **Convolution.** A small filter slid across an image to detect local patterns. The "C" in CNN. (Week 3)
+- **Pooling.** A downsampling operation that summarises a small spatial region. (Week 3)
+- **Overfitting.** When training loss keeps falling but validation loss starts rising. (Week 3)
+- **Confusion matrix.** A grid showing predicted vs. true labels — invaluable for diagnosing class-specific failures. (Week 3)
 
 ### Astronomy terms
 
@@ -333,15 +329,15 @@ A quick reference for jargon that recurs across weeks. Each term is explained in
 - **Spiral (S, SB).** A disk galaxy with arms; SB means barred. (Week 1)
 - **Lenticular (S0).** A disk galaxy with a bulge but no arms — the in-between case. (Week 1)
 - **Irregular (Irr).** A chaotic galaxy, often the result of mergers. (Week 1)
-- **CCD.** The "digital film" — a semiconductor device that turns incoming photons into electrons. (Week 2)
-- **Photometric filter.** A glass that lets only a specific wavelength range through. SDSS uses `ugriz`. (Week 2)
-- **Surface brightness.** How much light a galaxy emits per unit area, as a function of radius. (Week 3)
-- **Isophote.** A contour of constant surface brightness — like a contour line on a topographic map. (Week 3)
-- **Sérsic profile.** A mathematical fit `I(r) ∝ exp(-r^(1/n))` to surface brightness, where `n` indicates how concentrated the light is. (Week 4)
-- **Density wave.** The current best model for spiral arms — they are travelling waves of density, not rigid structures. (Week 5)
-- **Dust lane.** A dark band in a galaxy image where dust absorbs starlight. (Week 5)
-- **H II region.** A pink-ish bright patch where new massive stars ionise surrounding hydrogen — a starforming nursery. (Week 5)
-- **Merger.** Two galaxies in the act of colliding / coalescing — produces irregular morphology and starbursts. (Week 6)
+- **CCD.** The "digital film" — a semiconductor device that turns incoming photons into electrons. (Week 1, Part 2)
+- **Photometric filter.** A glass that lets only a specific wavelength range through. SDSS uses `ugriz`. (Week 1, Part 2)
+- **Surface brightness.** How much light a galaxy emits per unit area, as a function of radius. (Week 2)
+- **Isophote.** A contour of constant surface brightness — like a contour line on a topographic map. (Week 2)
+- **Sérsic profile.** A mathematical fit `I(r) ∝ exp(-r^(1/n))` to surface brightness, where `n` indicates how concentrated the light is. (Week 2)
+- **Density wave.** The current best model for spiral arms — they are travelling waves of density, not rigid structures. (Week 3)
+- **Dust lane.** A dark band in a galaxy image where dust absorbs starlight. (Week 3)
+- **H II region.** A pink-ish bright patch where new massive stars ionise surrounding hydrogen — a starforming nursery. (Week 3)
+- **Merger.** Two galaxies in the act of colliding / coalescing — produces irregular morphology and starbursts. (Week 3)
 
 ---
 
@@ -362,21 +358,21 @@ A catalogue of the most frequent ways students stumble, with their fixes. Bookma
 - **`TypeError: can't convert cuda:0 device type tensor to numpy`** → Calling `.numpy()` on a GPU tensor. Add `.cpu()` first.
 - **Shape mismatch in matmul** → Print the shapes! 80% of PyTorch bugs are shape bugs.
 
-### Data pipeline (Week 2+)
+### Data pipeline (Week 1, Part 2+)
 
 - **`ImageFolder` finds zero images** → Wrong root path, or your data isn't in `root/class_name/image.jpg` layout. Print the directory tree.
 - **A batch isn't the shape you expect** → Confused yourself about whether the channels dim or the batch dim comes first. PyTorch is **(B, C, H, W)**.
 - **Loss is `nan` or wildly large after one batch** → Inputs aren't normalised, or label tensor isn't `Long` dtype for `CrossEntropyLoss`.
 - **The same image looks fine and broken in different cells** → Forgot a `.cpu().numpy()` conversion for matplotlib, *or* didn't undo a `Normalize` before plotting.
 
-### Training (Week 4+)
+### Training (Week 2–3)
 
 - **Training loss doesn't decrease** → Learning rate too high or too low; or you forgot `optimizer.zero_grad()` and gradients are accumulating across steps.
 - **Training loss decreases but validation loss explodes** → Overfitting. Try a smaller model, more data augmentation, or early stopping.
 - **`CUDA out of memory`** → Reduce batch size, restart runtime, `del large_tensor; torch.cuda.empty_cache()`.
 - **Epoch takes 30 minutes** → Your model or your data is on CPU even though the other half is on GPU. Both must be `.to(device)`.
 
-### Evaluation (Week 6)
+### Evaluation (Week 3)
 
 - **`Dropout` randomness in eval** → Forgot `model.eval()`. Always call it before evaluation.
 - **Gradients filling up memory during eval** → Forgot `with torch.no_grad():`. Wrap the eval loop.
@@ -393,7 +389,7 @@ Yes — the code is identical. The track is *taught* against Colab because it's 
 Absolutely. Install PyTorch with the CUDA build that matches your driver (see [pytorch.org](https://pytorch.org/get-started/locally/)). Everything else is pure Python and `pip` / `conda` installable.
 
 **Do I need to read all six concept markdowns each week?**
-Yes if you want to genuinely learn the material. Skim them if you're short on time, but don't skip Week 2 — the data pipeline is the single most important non-modelling skill in applied ML.
+Yes if you want to genuinely learn the material. Skim them if you're short on time, but don't skip Week 1, Part 2 — the data pipeline is the single most important non-modelling skill in applied ML.
 
 **What if I fall behind a week?**
 Catch up in your own time. The weeks build on each other but each week's notebook is self-contained enough to pick up from. Ask in the mentor channel before you fall *two* weeks behind.

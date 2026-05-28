@@ -23,6 +23,29 @@
 - 📘 [Deep Learning with PyTorch — Eli Stevens, Luca Antiga, Thomas Viehmann (free PDF from Manning)](https://www.manning.com/books/deep-learning-with-pytorch).
 - 📘 [d2l.ai — Dive into Deep Learning (PyTorch edition)](https://d2l.ai/) — interactive textbook with executable notebooks.
 
+### Data pipelines (Part 2)
+- 📘 [PyTorch — Datasets & DataLoaders tutorial](https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html).
+- 📘 [`torchvision.datasets.ImageFolder` docs](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html).
+- 📘 [`torchvision.transforms` docs](https://docs.pytorch.org/vision/stable/transforms.html).
+- 📘 [PyTorch — `DataLoader` API reference](https://docs.pytorch.org/docs/stable/data.html).
+- 📘 [PyTorch — Writing custom datasets, dataloaders and transforms](https://docs.pytorch.org/tutorials/beginner/data_loading_tutorial.html).
+- 📺 [PyTorch DataLoaders explained — Patrick Loeber](https://www.youtube.com/watch?v=PXOzkkB5eH0).
+- 🌌 [Galaxy Zoo 2 Kaggle dataset (our dataset)](https://www.kaggle.com/datasets/jaimetrickz/galaxy-zoo-2-images) and the [Kaggle API docs](https://github.com/Kaggle/kaggle-api).
+
+---
+
+## Telescopes, CCDs & Detectors (Part 2)
+
+- 📘 [SDSS — instruments and the photometric camera](https://www.sdss.org/instruments/).
+- 📘 [Wikipedia — Charge-coupled device](https://en.wikipedia.org/wiki/Charge-coupled_device).
+- 📘 [Las Cumbres Observatory — Telescopes & detectors](https://lco.global/spacebook/telescopes/) and [light & filters](https://lco.global/spacebook/light/).
+- 📘 [SDSS — magnitudes and photometry](https://www.sdss.org/dr18/algorithms/magnitudes/).
+- 📘 [Wikipedia — Photometric system](https://en.wikipedia.org/wiki/Photometric_system) and [Apparent magnitude](https://en.wikipedia.org/wiki/Apparent_magnitude).
+- 📄 [Gunn et al. 1998 — The SDSS Photometric Camera (arXiv)](https://arxiv.org/abs/astro-ph/9809085).
+- 📄 [Lupton et al. 2004 — Preparing RGB images from CCD data (arXiv)](https://arxiv.org/abs/astro-ph/0312483) — how SDSS colour images are made.
+- 📺 [Crash Course Astronomy — Telescopes](https://www.youtube.com/watch?v=3HmF1JFFi-c).
+- 📘 [Astropy — working with FITS files](https://docs.astropy.org/en/stable/io/fits/) — the format real astronomers use instead of JPGs.
+
 ---
 
 ## Google Colab
@@ -106,9 +129,10 @@ You will not need to derive backprop by hand, but you'll be far happier if you h
 
 You will not read all of this. That's fine — most of it is reference, to be raided when a specific question comes up. Suggested workflow for week 1:
 
-1. **Do** the [`Quick Self-Check`](02-pytorch-tensors.md#quick-self-check) in `02-pytorch-tensors.md` and the gallery quiz in [`05-galaxy-morphologies.md`](05-galaxy-morphologies.md).
+1. **Part 1:** do the [`Quick Self-Check`](02-pytorch-tensors.md#quick-self-check) in `02-pytorch-tensors.md` and the gallery quiz in [`05-galaxy-morphologies.md`](05-galaxy-morphologies.md).
 2. **Watch** one episode of *Crash Course Astronomy* or *Dr. Becky* on galaxies.
 3. **Skim** the official PyTorch [Tensors tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html) end-to-end.
-4. **Bookmark** this page; come back as questions arise.
+4. **Part 2:** skim the PyTorch [Datasets & DataLoaders tutorial](https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html) and the self-check in [`08-data-pipelines.md`](08-data-pipelines.md).
+5. **Bookmark** this page; come back as questions arise.
 
 ⬅️ Back to [Week 1 README](README.md)

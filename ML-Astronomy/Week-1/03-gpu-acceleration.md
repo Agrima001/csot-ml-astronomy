@@ -96,7 +96,7 @@ c = a + b
 
 ## Move Whole Models, Not Just Tensors
 
-When we start defining models in Week 4, you'll do the equivalent thing for the model:
+When we start defining models in Week 2, you'll do the equivalent thing for the model:
 
 ```python
 model = MyModel().to(device)
@@ -172,7 +172,7 @@ torch.cuda.empty_cache()              # free unused cached memory
 If you hit `CUDA out of memory`:
 
 1. **`del` the big tensors** you no longer need, then call `torch.cuda.empty_cache()`.
-2. **Reduce the batch size** (we'll see this in Week 5).
+2. **Reduce the batch size** (we'll see this in Week 3).
 3. **Restart the runtime** as a last resort — it always works.
 4. **Use smaller image sizes** during early experimentation (e.g., 32×32 instead of 224×224).
 

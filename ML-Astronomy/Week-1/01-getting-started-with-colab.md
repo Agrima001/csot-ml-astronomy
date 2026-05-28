@@ -65,7 +65,7 @@ Markdown cells in Colab support standard Markdown syntax, LaTeX inside `$…$`, 
 
 ### 5. (Optional) Mount Google Drive
 
-When we start working with the Galaxy Zoo dataset (Week 2), it's convenient to store data in your Drive so it persists across sessions:
+When we start working with the Galaxy Zoo dataset (Week 1, Part 2), it's convenient to store data in your Drive so it persists across sessions:
 
 ```python
 from google.colab import drive
